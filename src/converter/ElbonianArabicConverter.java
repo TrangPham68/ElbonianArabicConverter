@@ -3,7 +3,9 @@ package converter;
 import converter.exceptions.MalformedNumberException;
 import converter.exceptions.ValueOutOfBoundsException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import static java.lang.Integer.parseInt;
 
@@ -180,9 +182,28 @@ public class ElbonianArabicConverter {
      */
     public String toElbonian() {
         // TODO Fill in the method's body
-        return "I";
-    }
 
+        String value = null;
+        String key = null;
+        String[] arr = number.split("");
+        ArrayList<String> elbo = new ArrayList<String>();
+        for (int i = 0; i < arr.length; i++) {
+            value = arr[i];
+            for (Map.Entry entry : hash_map.entrySet()) {
+                if (value.equals(entry.getValue())) {
+                    key = (String) entry.getKey();
+                    elbo.add(key);
+                    break;
+                }
+            }
+        }
+        String listString = "";
+
+        for (String s : elbo) {
+            listString += s + "\t";
+        }
+        return listString;
+    }
 
     public static void main(String[] args)
     {
