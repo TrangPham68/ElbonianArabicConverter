@@ -17,7 +17,7 @@ public class ElbonianArabicConverter {
 
     // A string that holds the number (Elbonian or Arabic) you would like to convert
     private final String number;
-    HashMap<String, Integer> hash_map;
+    HashMap<String, Integer> hash_map = new HashMap();
 
     /**
      * Constructor for the ElbonianArabic class that takes a string. The string should contain a valid

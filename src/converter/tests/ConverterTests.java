@@ -129,12 +129,6 @@ public class ConverterTests {
         throw new ValueOutOfBoundsException("0");
     }
 
-    @Test
-    public void ElbonianToArabicSampleTest2() throws MalformedNumberException, ValueOutOfBoundsException{
-        ElbonianArabicConverter converter = new ElbonianArabicConverter("2999");
-        assertEquals(converter.toElbonian(), "MMEDZYKJ");
-    }
-
     @Test(expected = ValueOutOfBoundsException.class)
     public void valueOutOfBoundsTest2() throws MalformedNumberException, ValueOutOfBoundsException {
         throw new ValueOutOfBoundsException("3000");
@@ -162,6 +156,12 @@ public class ConverterTests {
     public void SampleTestToElbonian2() throws MalformedNumberException, ValueOutOfBoundsException {
         ElbonianArabicConverter converter = new ElbonianArabicConverter("903");
         assertEquals(converter.toElbonian(), "EDJ");
+    }
+
+    @Test
+    public void SampleTestElbonian3() throws MalformedNumberException, ValueOutOfBoundsException{
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("2999");
+        assertEquals(converter.toElbonian(), "MMEDZYKJ");
     }
 
     // TODO Add more test cases
