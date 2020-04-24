@@ -20,6 +20,7 @@ public class ElbonianArabicConverter {
     // A string that holds the number (Elbonian or Arabic) you would like to convert
     private final String number;
     HashMap<String, Integer> hash_map = new HashMap();
+    HashMap<String, Integer> count = new HashMap<>();  //a string and a number of appearance
 
     /**
      * Constructor for the ElbonianArabic class that takes a string. The string should contain a valid
@@ -53,17 +54,17 @@ public class ElbonianArabicConverter {
         String elbonian = null;
         String[] arr;
 
-        HashMap<String, Integer> count = new HashMap<>();  //a string and a number of appearance
         count.put("M",0);
-        count.put("C",0);
-        count.put("D",0);
         count.put("E",0);
-        count.put("X",0);
-        count.put("Y",0);
+        count.put("D",0);
+        count.put("C",0);
         count.put("Z",0);
-        count.put("I",0);
-        count.put("J",0);
+        count.put("Y",0);
+        count.put("X",0);
         count.put("K",0);
+        count.put("J",0);
+        count.put("I",0);   //in order
+
 
 
         try {
@@ -182,10 +183,60 @@ public class ElbonianArabicConverter {
      */
     public String toElbonian() {
         // TODO Fill in the method's body
+        //we know it is a number in a right range
 
+        //go from biggest to smallest
+        int[] elbonianArr = new int[10];
+        int remain, m, c, d,e ,x ,y ,z ,i ,j ,k;
+        int num = parseInt(number);
+        m = (num/1000);   //0, 1 or 2 //m
+        remain = num - 1000*m;
+        count.replace("M", m);
+        e = remain/600;  //either 1 or 0
+        remain = remain - e*600;
+        count.replace("E", e);
+        d = remain/300;//either 1 or 0
+        remain = remain - d*300;
+        count.replace("D", d);
+        c = (remain/100);//either 0, or 2  (will be 0 if d and e == 1)
+        remain = remain - c*100;
+        count.replace("C", c);
+        z = remain/60;
+        remain = remain - z*60;
+        count.replace("Z", z);
+        y = remain/30;
+        remain = remain - y*30;
+        count.replace("Y", y);
+        x = (remain/10);
+        remain = remain - x*10;
+        count.replace("X", x);
+        k = remain/6;
+        remain = remain - k*6;
+        count.replace("K", k);
+        j = remain/3;
+        remain = remain - j*3;
+        count.replace("J", j);
+        i = remain;
+        count.replace("I", i);
+
+        String str ="";
+        String[] order = {"M", "E", "D", "C", "Z", "Y", "X", "K", "J", "I"};
+        for (String s : order) {
+            for (int cnt =0; cnt < count.get(s);cnt++)
+            {
+                str += s;
+            }
+        }
+
+        return str;
+
+        /**
         String value = null;
         String key = null;
+
+
         String[] arr = number.split("");
+
         ArrayList<String> elbo = new ArrayList<String>();
         for (int i = 0; i < arr.length; i++) {
             value = arr[i];
@@ -197,31 +248,20 @@ public class ElbonianArabicConverter {
                 }
             }
         }
+
         String listString = "";
 
         for (String s : elbo) {
             listString += s + "\t";
         }
-        return listString;
+
+        return listString;**/
+
     }
 
     public static void main(String[] args)
     {
-        int a;
-        a = parseInt("123");
-        String str= "hello";
-        String[] test = str.split("");
+    }
 
-        for (int i = 0; i< 5; i++) {
-            System.out.println(test[i]);
-        }
-        try{
-            a = parseInt("123abc");
-            System.out.println(a);
-        }
-        catch(Exception e){
-            System.out.println(e.toString());
-    }
-    }
 
 }
