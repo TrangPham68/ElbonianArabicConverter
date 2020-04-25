@@ -189,6 +189,7 @@ public class ElbonianArabicConverter {
         int[] elbonianArr = new int[10];
         int remain, m, c, d,e ,x ,y ,z ,i ,j ,k;
         int num = parseInt(number);
+
         m = (num/1000);   //0, 1 or 2 //m
         remain = num - 1000*m;
         count.replace("M", m);
@@ -229,33 +230,6 @@ public class ElbonianArabicConverter {
         }
 
         return str;
-
-        /**
-        String value = null;
-        String key = null;
-
-
-        String[] arr = number.split("");
-
-        ArrayList<String> elbo = new ArrayList<String>();
-        for (int i = 0; i < arr.length; i++) {
-            value = arr[i];
-            for (Map.Entry entry : hash_map.entrySet()) {
-                if (value.equals(entry.getValue())) {
-                    key = (String) entry.getKey();
-                    elbo.add(key);
-                    break;
-                }
-            }
-        }
-
-        String listString = "";
-
-        for (String s : elbo) {
-            listString += s + "\t";
-        }
-
-        return listString;**/
 
     }
 
