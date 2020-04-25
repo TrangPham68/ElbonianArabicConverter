@@ -223,7 +223,7 @@ public class ElbonianArabicConverter {
         String str ="";
         String[] order = {"M", "E", "D", "C", "Z", "Y", "X", "K", "J", "I"};
         for (String s : order) {
-            for (int cnt =0; cnt < count.get(s);cnt++)
+            for (int cnt =0; cnt < count.get(s); cnt++)
             {
                 str += s;
             }
@@ -232,10 +232,5 @@ public class ElbonianArabicConverter {
         return str;
 
     }
-
-    public static void main(String[] args)
-    {
-    }
-
 
 }
